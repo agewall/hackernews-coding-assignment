@@ -1,10 +1,8 @@
 import { SWRConfig } from 'swr'
 
-import styles from './App.module.sass'
-
-import { Stories } from './stories/Stories'
-
-const fetcher = async (url: string) => await (await fetch(url)).json()
+import { Stories } from 'stories'
+import { Background } from 'Background'
+import { fetcher } from 'utils'
 
 export const App = () => (
   <SWRConfig
@@ -13,10 +11,8 @@ export const App = () => (
       fetcher
     }}
   >
-    <div className={styles.container}>
+    <Background>
       <Stories />
-    </div>
+    </Background>
   </SWRConfig>
 )
-
-export default App

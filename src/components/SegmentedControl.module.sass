@@ -1,0 +1,39 @@
+@import 'variables'
+
+.container
+    align-content: center
+    backdrop-filter: blur(80px)
+    background: rgba($gray-6, 0.5)
+    border-radius: 8px
+    box-sizing: border-box
+    cursor: pointer
+    display: flex
+    height: $xl
+    justify-content: space-evenly
+    left: $sm
+    padding: 2px
+    position: fixed
+    top: $sm
+    width: 340px
+
+.emptyseparator
+    align-self: center
+    height: 50%
+    margin: 0 2px
+    width: 1px
+
+.filledseparator
+    @extend .emptyseparator
+    background: $gray-2
+
+.control
+    flex: 1
+    text-align: center
+    span
+        font-size: 13px
+        vertical-align: middle
+
+.selected
+    background: $gray-2
+    border-radius: 6px
+    width: 50px

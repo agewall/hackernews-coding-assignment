@@ -1,63 +1,21 @@
-import useSWR from 'swr'
+import { FC } from 'react'
 
-import { User } from '../user/User'
-import { Loader } from '../components/Loader'
+import { Author } from 'author'
+import { StoryValues } from 'stories'
 
 import styles from './Story.module.sass'
 
-const fetcher = async ({ url, args }: { url: string; args: string }) => {
-  const {
-    by,
-    url: storyUrl,
-    title,
-    time,
-    score
-  } = await (await fetch(`${url}${args}.json`)).json()
-
-  return {
-    by,
-    title,
-    score,
-    url: storyUrl,
-    time: new Date(time * 1000)
-  }
-}
-
-interface StoryValues {
-  readonly by: string
-  readonly url?: string
-  readonly title: string
-  readonly time: Date
-  readonly score: number
-}
-
-export const Story = ({ id }: { id: string }) => {
-  const { data, error } = useSWR<StoryValues>(
-    {
-      url: 'https://hacker-news.firebaseio.com/v0/item/',
-      args: id
-    },
-    fetcher
-  )
-
-  if (error) return <div>failed to load</div>
-
-  if (!data) {
-    return (
-      <div className={styles.container}>
-        <Loader />
-      </div>
-    )
-  }
-
-  console.log(data)
-
-  return (
-    <div className={styles.container}>
-      <a href={data?.url} target='_blank' rel='noreferrer'>
-        {data.title}
+export const Story: FC<StoryValues> = ({ by, url, title, time, score }) => (
+  <div className={styles.container}>
+    <div className={styles.score}>{score}</div>
+    <div className={styles.content}>
+      <a className={styles.link} href={url} target='_blank' rel='noreferrer'>
+        <h3 className={styles.title}>{title}</h3>
       </a>
-      <User id={data.by} />
+      <Author id={by} />
     </div>
-  )
-}
+    <div className={styles.timestamp}>
+      <span>{time.toLocaleDateString()}</span>
+    </div>
+  </div>
+)

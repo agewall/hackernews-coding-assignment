@@ -1,34 +1,22 @@
-import { useMemo } from 'react'
-import useSWR from 'swr'
-
-import { Story } from './Story'
-import { Loader } from '../components/Loader'
+import { Loader } from 'components'
+import { Story, useStories } from 'stories'
 
 import styles from './Stories.module.sass'
 
 export const Stories = () => {
-  const { data, error } = useSWR<ReadonlyArray<string>>(
-    'https://hacker-news.firebaseio.com/v0/topstories.json'
-  )
-
-  const randomTopStoriesIds = useMemo(() => {
-    if (!data) return null
-
-    return Array.from(
-      { length: 10 },
-      () => data[Math.round(Math.random() * data.length)]
-    )
-  }, [data])
+  const { data, error } = useStories()
 
   if (error) return <div>failed to load</div>
 
-  if (!randomTopStoriesIds) return <Loader />
+  if (!data) return <Loader />
 
   return (
     <div className={styles.container}>
-      {randomTopStoriesIds.map((id) => (
-        <Story id={id} key={id} />
-      ))}
+      {[...data]
+        .sort((a, b) => b.score - a.score)
+        .map((story) => (
+          <Story key={story.id} {...story} />
+        ))}
     </div>
   )
 }
