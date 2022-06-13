@@ -1,0 +1,25 @@
+.container
+    align-items: center
+    display: flex
+    justify-content: center
+
+.dot
+    width: 15px
+    height: 15px
+    background: red
+    border-radius: 50%
+    margin: 0 5px
+
+$dots: ( One: 0s, Two: 0.3s, Three: 0.6s )
+
+@each $name, $delay in $dots
+    .dot#{$name}
+        @extend .dot
+        animation: anim 1s linear $delay infinite
+
+@keyframes anim
+    0%
+        opacity: 1
+
+    50%, 100%
+        opacity: 0.5

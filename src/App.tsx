@@ -1,7 +1,8 @@
 import { SWRConfig } from 'swr'
 
 import styles from './App.module.sass'
-import { Stories } from './components/Stories'
+
+import { Stories } from './stories/Stories'
 
 const fetcher = async (url: string) => await (await fetch(url)).json()
 

@@ -2,6 +2,9 @@ import { useMemo } from 'react'
 import useSWR from 'swr'
 
 import { Story } from './Story'
+import { Loader } from '../components/Loader'
+
+import styles from './Stories.module.sass'
 
 export const Stories = () => {
   const { data, error } = useSWR<ReadonlyArray<string>>(
@@ -19,10 +22,10 @@ export const Stories = () => {
 
   if (error) return <div>failed to load</div>
 
-  if (!randomTopStoriesIds) return <div>loading</div>
+  if (!randomTopStoriesIds) return <Loader />
 
   return (
-    <div>
+    <div className={styles.container}>
       {randomTopStoriesIds.map((id) => (
         <Story id={id} key={id} />
       ))}
