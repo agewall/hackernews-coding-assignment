@@ -1,12 +1,21 @@
-import logo from './logo.svg'
-import styles from './App.module.sass'
+import { SWRConfig } from 'swr'
 
-function App() {
-  return (
+import styles from './App.module.sass'
+import { Stories } from './components/Stories'
+
+const fetcher = async (url: string) => await (await fetch(url)).json()
+
+export const App = () => (
+  <SWRConfig
+    value={{
+      revalidateOnFocus: false,
+      fetcher
+    }}
+  >
     <div className={styles.container}>
-      <img src={logo} className={styles.logo} alt='logo' />
+      <Stories />
     </div>
-  )
-}
+  </SWRConfig>
+)
 
 export default App
