@@ -2,7 +2,7 @@ import { useState, FC, PropsWithChildren } from 'react'
 
 import { SegmentedControl, SegmentedControlProps } from 'components'
 import { ArrowIcon } from 'icons'
-import { cls } from 'utils'
+import { cls, useBoolean } from 'utils'
 import styles from './Background.module.sass'
 
 enum Backgrounds {
@@ -30,7 +30,7 @@ const BackgroundControl: FC<SegmentedControlProps> = ({
   onValueChange,
   controls
 }) => {
-  const [show, setShow] = useState(true)
+  const [show, toggle] = useBoolean(true)
 
   return (
     <>
@@ -38,7 +38,7 @@ const BackgroundControl: FC<SegmentedControlProps> = ({
         <div>
           <SegmentedControl onValueChange={onValueChange} controls={controls} />
         </div>
-        <div className={styles.toggle} onClick={() => setShow(!show)}>
+        <div className={styles.toggle} onClick={toggle}>
           <div className={styles.icon}>
             <ArrowIcon />
           </div>
