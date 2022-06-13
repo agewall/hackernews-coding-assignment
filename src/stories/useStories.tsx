@@ -35,13 +35,13 @@ const parseStory = ({
 const storyFetcher = async ({ url, args }: { url: string; args: string }) =>
   parseStory(await fetcher(`${url}${args}.json`))
 
-const storiesFetcher = async ({
+const storiesFetcher = ({
   url,
   args
 }: {
   url: string
   args: ReadonlyArray<string>
-}) => await Promise.all(args.map((id) => storyFetcher({ url, args: id })))
+}) => Promise.all(args.map((id) => storyFetcher({ url, args: id })))
 
 export const useStories = () => {
   const { data: topStoryIds, error: topStoriesError } = useSWR<
