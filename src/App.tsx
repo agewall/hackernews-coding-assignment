@@ -1,7 +1,7 @@
 import { SWRConfig } from 'swr'
 
 import { Stories } from 'stories'
-import { Background } from 'Background'
+import { Background } from 'background/Background'
 import { fetcher } from 'utils'
 
 export const App = () => (

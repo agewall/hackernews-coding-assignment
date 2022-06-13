@@ -6,7 +6,7 @@ import { fetcher } from 'utils'
 export interface StoryValues {
   readonly id: string
   readonly by: string
-  readonly url?: string
+  readonly url?: URL
   readonly title: string
   readonly time: Date
   readonly score: number
@@ -28,7 +28,7 @@ const parseStory = ({
   by,
   title,
   score,
-  url,
+  url: url ? new URL(url) : undefined,
   time: new Date(time * 1000)
 })
 

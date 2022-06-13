@@ -1,0 +1,45 @@
+@import 'variables'
+
+.container
+  align-items: center
+  display: flex
+  flex-direction: column
+  justify-content: center
+  min-height: 100vh
+
+.backgroundControl
+  display: flex
+  gap: $sm
+  left: $sm
+  position: fixed
+  top: $sm
+  transition: 0.3s ease-out
+  z-index: 1
+
+.icon
+  fill: $light
+  height: $lg
+  transform: rotate(180deg)
+  width: $lg
+
+.toggle
+  @extend %blurBackground
+  align-items: center
+  border-radius: 8px
+  cursor: pointer
+  display: flex
+  height: $xl
+  justify-content: center
+  width: $xl
+
+.hide
+  transform: translateX(calc(-100% + $xl))
+  .icon
+    transform: rotate(0deg)
+
+$bgs: ( bg-one: url(../img/bg1.jpg), bg-two: url(../img/bg2.jpg) )
+
+@each $name, $url in $bgs
+  .#{$name}
+    background: $url no-repeat center center fixed
+    background-size: cover

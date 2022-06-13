@@ -1,8 +1,7 @@
 @import 'variables'
 
 .container
-    backdrop-filter: blur(80px)
-    background: rgba($gray-6, 0.5)
+    @extend %blurBackground
     border-radius: $lg
     box-sizing: border-box
     display: flex
@@ -23,6 +22,10 @@
     opacity: 0.9
     &:hover
         text-decoration: underline
+
+.hostname
+    color: $gray-1
+    font-weight: 400
 
 .timestamp
     color: $gray-1

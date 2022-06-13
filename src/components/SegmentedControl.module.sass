@@ -1,19 +1,15 @@
 @import 'variables'
 
 .container
+    @extend %blurBackground
     align-content: center
-    backdrop-filter: blur(80px)
-    background: rgba($gray-6, 0.5)
     border-radius: 8px
     box-sizing: border-box
     cursor: pointer
     display: flex
     height: $xl
     justify-content: space-evenly
-    left: $sm
     padding: 2px
-    position: fixed
-    top: $sm
     width: 340px
 
 .emptyseparator
@@ -27,11 +23,12 @@
     background: $gray-2
 
 .control
+    align-items: center
+    display: flex
     flex: 1
-    text-align: center
+    justify-content: center
     span
         font-size: 13px
-        vertical-align: middle
 
 .selected
     background: $gray-2

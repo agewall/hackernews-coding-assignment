@@ -1,12 +1,10 @@
 import useSWR from 'swr'
 
+import { fetcher } from 'utils'
 import styles from './Author.module.sass'
 
-const fetcher = async ({ url, args }: { url: string; args: string }) => {
-  const data = await (await fetch(`${url}${args}.json`)).json()
-
-  return data
-}
+const authorFetcher = ({ url, args }: { url: string; args: string }) =>
+  fetcher(`${url}${args}.json`)
 
 interface AuthorValues {
   readonly id: string
@@ -19,7 +17,7 @@ export const Author = ({ id }: { id: string }) => {
       url: 'https://hacker-news.firebaseio.com/v0/user/',
       args: id
     },
-    fetcher
+    authorFetcher
   )
 
   if (error) return <div>failed to load</div>

@@ -1,7 +1,6 @@
 import { Fragment, FC, useState, useCallback } from 'react'
 
 import { cls } from 'utils'
-
 import styles from './SegmentedControl.module.sass'
 
 interface Controls {
@@ -9,7 +8,7 @@ interface Controls {
   readonly value: string
 }
 
-interface SegmentedControlProps {
+export interface SegmentedControlProps {
   readonly onValueChange: (value: string) => void
   readonly controls: ReadonlyArray<Controls>
 }

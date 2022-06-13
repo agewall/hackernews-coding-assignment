@@ -8,7 +8,7 @@ $gray-4: #3a3a3c
 $gray-5: #2c2c2e
 $gray-6: #1c1c1e
 
-// spacings
+// sizes
 $xs: 4px
 $sm: 8px
 $md: 12px
@@ -17,4 +17,6 @@ $xl: 32px
 $xxl: 48px
 $hg: 128px
 
-$bgs: ( bg-one: url(./img/bg2.jpg), bg-two: url(./img/bg1.jpg) )
+%blurBackground
+    backdrop-filter: blur(80px)
+    background: rgba($gray-6, 0.5)

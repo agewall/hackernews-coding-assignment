@@ -1,6 +1,5 @@
 import { Loader } from 'components'
 import { Story, useStories } from 'stories'
-
 import styles from './Stories.module.sass'
 
 export const Stories = () => {
