@@ -1,6 +1,7 @@
 ## To start
 
 ### `npm install && npm start`
+Then go to http://localhost:3000
 
 ## Images
 
