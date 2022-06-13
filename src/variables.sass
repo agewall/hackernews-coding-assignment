@@ -17,6 +17,9 @@ $xl: 32px
 $xxl: 48px
 $hg: 128px
 
+// If backrop-filter not supported (firefox) we make it less transparent 
 %blurBackground
-    backdrop-filter: blur(80px)
-    background: rgba($gray-6, 0.5)
+    background: rgba($gray-6, 0.8)
+    @supports (backdrop-filter: none)
+        background: rgba($gray-6, 0.5)
+        backdrop-filter: blur(80px)
